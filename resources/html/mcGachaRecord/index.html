@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}/html/mcGachaRecord/index.css" />
+  <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="head-box">
+      <div class="title">鸣潮{{cardPoolName}}记录</div>
+      <div class="label">Handmade With ❤️ by TomyJan.</div>
+      <div class="card">
+        <div class="avatar">
+            <img src="{{userInfo.gameHeadUrl}}" alt="Avatar">
+        </div>
+        <div class="info">
+            <div class="name">{{userInfo.gameName}}</div>
+            <div class="id">UID: {{userInfo.gameUid}}</div>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <!--这里对 >99999 抽卡数量使用 11.11w 这样的格式显示-->
+                <div class="number">{{userInfo.gacha.count > 99999 ? (userInfo.gacha.count / 10000).toFixed(2) + 'w': userInfo.gacha.count}}</div>
+                <div class="label">抽卡总数</div>
+            </div>
+            <div class="stat">
+                <div class="number">{{userInfo.gacha.goldCount}}</div>
+                <div class="label">金卡数</div>
+            </div>
+            {{if userInfo.gacha.notUpGoldCount > 0}}
+            <div class="stat">
+                <div class="number">{{userInfo.gacha.notUpGoldCount}}</div>
+                <div class="label">歪 T.T</div>
+            </div>
+            {{/if}}
+            <div class="stat">
+                <div class="number">{{userInfo.gacha.fourStarItemCount}}</div>
+                <div class="label">紫卡数</div>
+            </div>
+            <div class="stat">
+                <div class="number">{{userInfo.gacha.everyGoldCost || "暂无"}}</div>
+                <div class="label">平均出金</div>
+            </div>
+            <div class="stat">
+                <div class="number">{{userInfo.gacha.eachUpItemCost > 99999 ? (userInfo.gacha.eachUpItemCost / 10000).toFixed(2) + 'w': userInfo.gacha.eachUpItemCost}}</div>
+                <div class="label">每UP星声</div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    {{each goldCardRecord card}}
+    <div class="cont-box">
+      <div class="help-group">
+        <div class="date">{{card.time.split(' ')[0].split('-')[1]}}-{{card.time.split(' ')[0].split('-')[2]}}</div>
+        <div class="avatar-name" style="color: {{card.isUpItem ? "#FFD381" : "white"}};">{{ card.itemId == -1 ? '未出金' : card.itemName }}{{card.itemCount > 1 ? `x${card.itemCount}` : ""}}</div>
+        <img src="{{pluResPath}}/img/common/item/mc/{{card.itemId}}.png" alt="{{card.itemName}}" class="card-avatar">
+        <div class="avatar-count">{{card.thisCardCost}}</div>
+        <div class="bar-container">
+          <div class="bar" style="width: calc({{card.thisCardCost * 5 + 20}}px); background-color: {{card.thisCardCost >= 60 ? '#9D3333' : card.thisCardCost >= 30 ? '#6A39B7' : '#158B2B'}};"></div>
+          <div class="avatar-isup">{{card.isUpItem ? "UP" : ""}}</div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+    <!-- 无数据提示 -->
+    {{if goldCardRecord.length == 0}}
+    <div class="cont-box">
+      <div class="help-group">
+        暂无数据
+      </div>
+    </div>
+    {{/if}}
+    <div class="copyright">Created By Yunzai-Bot & {{pluginName}} {{pluginVer}}</div>
+  </div>
+</body>
+
+</html>

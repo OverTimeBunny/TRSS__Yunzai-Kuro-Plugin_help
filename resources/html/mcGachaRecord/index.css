@@ -1,0 +1,207 @@
+@font-face {
+    font-family: "MiSans-Normal";
+    src: url("../../font/MiSans-Normal.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "HYWenHei-55W";
+    src: url("../../font/HYWenHei-55W.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: MiSans-Normal;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../../../data/system/cachedImg/cardBg.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;  /* 确保body在底层 */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.42);  /* 调整透明度以改变暗度 */
+    pointer-events: none;  /* 防止遮罩层影响鼠标事件 */
+    z-index: -1;  /* 将遮罩层放在背景图之上，其他内容之下 */
+}
+
+.card {
+    background-color: rgba(62, 62, 62, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 700px;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+.info .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90px;
+    margin-bottom: 3px;
+}
+.info .id {
+    width: 90px;
+    font-size: 11px;
+    color: #bbb;
+}
+.stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.stat {
+    text-align: center;
+    flex: 1;
+}
+.stat:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+.stat .number {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.stat .label {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.container {
+    width: 730px;
+    padding: 20px 15px 10px 15px;
+}
+
+.head-box {
+    margin: 60px 0 0 0;
+    padding-bottom: 0;
+}
+
+.head-box .title {
+    font-size: 50px;
+    font-family: HYWenHei-55W;
+    color: white;
+}
+
+.head-box .label {
+    font-family: HYWenHei-55W;
+    color: white;
+}
+
+.cont-box {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(62, 62, 62, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.help-group {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.date {
+    font-size: 18px;
+    width: 60px;
+    text-align: center;
+}
+
+.avatar-name {
+    font-size: 18px;
+    width: 80px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.avatar-count {
+    font-size: 18px;
+    width: 30px;
+    margin-left: 6px;
+    z-index: 1;
+}
+
+.card-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    background: #D48E48;
+    z-index: 1; /* 上调层级防止后面的 bar 遮挡 */
+}
+
+.bar-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-left: -50px;
+}
+
+.bar {
+    height: 26px;
+    border-radius: 6px;
+    min-width: 80px; /* 设置最小宽度防止文字放不下 */
+}
+
+.avatar-isup {
+    font-size: 18px;
+    color: #FFD381;
+    width: 30px;
+    align-items: right;
+    margin-left: -30px;
+    z-index: 1;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    font-family: HYWenHei-55W;
+    margin-top: 20px;
+}
